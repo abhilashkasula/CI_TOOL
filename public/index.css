@@ -1,0 +1,76 @@
+.dot {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin: 10px;
+}
+#dot1 {
+  background: rgb(233, 233, 70);
+  animation: animate 1s linear 0s infinite;
+}
+#dot2 {
+  background: green;
+  animation: animate 1s linear 0.1s infinite;
+}
+#dot3 {
+  background: red;
+  animation: animate 1s linear 0.2s infinite;
+}
+#dot4 {
+  background: blue;
+  animation: animate 1s linear 0.3s infinite;
+}
+@keyframes animate {
+  25% {
+    transform: translate(0, -30%);
+  }
+  75% {
+    transform: translate(0, 30%);
+  }
+}
+#test {
+  color: white;
+  background-color: blue;
+  height: 25vw;
+  width: 40vw;
+  margin: auto;
+  font-size: 2vw;
+  padding-left: 5vw;
+  padding-top: 3vw;
+  line-height: 4vw;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  position: absolute;
+  font-family: sans-serif;
+  overflow: scroll;
+}
+
+.failing {
+  font-size: 1vw;
+  padding-bottom: 0px;
+  line-height: 1.4vw;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+  border: 1px solid white;
+  padding: 10px;
+  font-size: 1vw;
+}
+
+.hide {
+  visibility: hidden;
+}
+
+.show {
+  visibility: visible;
+}
+
+#waiting {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
