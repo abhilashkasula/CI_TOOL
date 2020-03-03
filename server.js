@@ -2,11 +2,18 @@ const {execSync, exec} = require('child_process');
 const express = require('express');
 const app = express();
 const port = 8080;
+const [userName, repoName] = process.argv.slice(2);
+
+const main = function() {
+  execSync(
+    `  rm -rf testingFolder && mkdir testingFolder && cd testingFolder && git clone git@github.com:${userName}/${repoName}.git && cd ${repoName} && npm install`
+  );
+};
 
 const runTest = function(req, res) {
   const {previousCommit} = req.app.locals;
   previousCommit.testStatus = 'pass';
-  exec('cd todo-bcalm && git pull origin master && npm run ciTest', err => {
+  exec(`cd testingFolder/${repoName} && git pull origin master && npm run ciTest`, err => {
     if (err) {
       previousCommit.testStatus = 'fail';
       execSync(
@@ -26,7 +33,7 @@ const setPreviousCommit = function(previousCommit, latestCommit) {
 };
 
 const isUpdate = function(req, res) {
-  const url = 'https://api.github.com/repos/bcalm/todo-bcalm/commits';
+  const url = `https://api.github.com/repos/${userName}/${repoName}/commits`;
   const commits = JSON.parse(execSync(`curl -u ${process.env.GITHUB_TOKEN} ${url}`).toString());
   const [latestCommit] = commits;
   let status = false;
@@ -44,4 +51,4 @@ app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 app.get('/runTests', runTest);
 app.get('/isUpdate', isUpdate);
-app.listen(port, console.log('listening on:', port));
+app.listen(port, main);
