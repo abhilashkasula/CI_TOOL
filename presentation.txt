@@ -1,0 +1,86 @@
+Team name
+Write Iteration 0/1/2
+Team introduction
+  like ba & qa
+mockup
+  Home Page
+  playing Page
+What we done in Iteration 0
+  like setup
+  spikes
+
+
+Iteration 1 plan
+  Stories 
+    size(points) story name
+    Stories sizes iteration chart velocity diagram
+    points planned
+  Roles
+   QA & BA should be one after one iteration
+  Wiki Resources
+    show same page if it is possible
+
+
+---------------------------------Iteration 1 -------------------------------------------
+give story presentation and status 
+plan for next iteration roles for next iteration
+Release status (like we did in lego exercise)
+Stories sizes (new stories added)
+Demo
+And Done
+
+------------------------------------------Power Grid -------------------------------------------
+overview
+progress so bar 
+  pending status like pending or done show additional stories
+  Backlog
+
+
+------------------------------------------------------------------Anumeha mam Session----------------------------------------------------------------
+Epics high level priorities
+
+For  Group chatting in whatsapp both should in whatsapp know who are you, know how to start chat with a person, know you want to chat with
+
+INVEST principle for story=>
+ I-> Independent => story should be independent.
+ N-> Negotiable => story should be negotiable.
+ V-> Valuable => story should be valuable.
+ E-> Estimated => story should be estimated.
+ S-> small => story should be small enough so that you can get feedback on that.
+ T-> Tested => story should be testable.
+
+Template=>
+  As a <user>
+  I want to <Goal>
+  so that <Reason>
+
+Business Context:
+
+In scope:
+  Build chat screen.
+  text/button.
+  send button.
+  select the person.
+  show that message to that person.
+
+Acceptance criteria:
+  Given
+  When
+  Then
+
+Ex. Given person want to send message when types then send message to friend. Internet failure. Language
+
+Out of Scope:
+  Receiving message is out of scope.
+
+As a user.
+I want to chat with my friend.
+So that I can communicate with my friend.
+
+Flow->  Epics-feature-story
+
+Velocity Exercise: 
+Pair    Iteration(3Days)
+1Pair   1point
+2Pair   2point
+3Pair   3point

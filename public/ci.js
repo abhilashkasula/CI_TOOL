@@ -1,6 +1,6 @@
 const showResult = function({testStatus, author, date, message}) {
-  document.getElementById('test').style['color'] = 'white';
-  document.getElementById('waiting').className = 'hide';
+  document.querySelector('.loading').classList.remove('show-loading');
+  document.querySelector('.loading').classList.add('hide-loading');
   const test = document.getElementById('test');
   test.style['backgroundColor'] = 'green';
   test.innerHTML = `<i>Tests status: ${testStatus}ing</i></br>`;
@@ -14,10 +14,9 @@ const showResult = function({testStatus, author, date, message}) {
 };
 
 const load = function() {
-  document.getElementById('test').style['backgroundColor'] = 'blue';
-  document.getElementById('test').style['color'] = 'black';
+  document.getElementById('test').style['backgroundColor'] = 'rgb(0, 134, 216)';
   document.getElementById('test').innerHTML = 'Tests are running';
-  document.getElementById('waiting').className = 'show';
+  document.querySelector('.loading').classList.add('show-loading');
   fetch('/runTests')
     .then(res => res.json())
     .then(showResult);
@@ -34,4 +33,4 @@ const update = function() {
 };
 
 update();
-setInterval(update, 20000);
+setInterval(update, 60000);

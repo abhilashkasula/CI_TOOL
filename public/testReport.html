@@ -423,69 +423,13 @@ body {
                     <li><span id="toggle-passes" class="toggle-passes">show failures only</span></li>
                 </ul>
                 <ul class="mocha-stats">
-                    <li class="passes">passes: <em>9</em></li>
+                    <li class="passes">passes: <em>0</em></li>
                     <li class="pending">pending: <em>0</em></li>
                     <li class="failures">failures: <em>0</em></li>
-                    <li class="duration">duration: <em>41ms</em></li>
+                    <li class="duration">duration: <em>0ms</em></li>
                 </ul>
             </div>
-            <ul id="report"><li class="suite"><h1>GET</h1><ul><li class="test pass fast"><h2>should give content of index.html file if request is for root<span class="duration">18ms</span></h2><pre><code>done =&#x3E; {
-    request(app.serve.bind(app))
-      .get(&#x27;/&#x27;)
-      .set(&#x27;content-type&#x27;, &#x27;application/json&#x27;)
-      .expect(&#x27;Content-type&#x27;, &#x27;text/html&#x27;)
-      .expect(/TODO/)
-      .expect(200, done);
-  }</code></pre></li></ul></li><li class="suite"><h1>GET</h1><ul><li class="test pass fast"><h2>should give error if any one give absent file<span class="duration">2ms</span></h2><pre><code>done =&#x3E; {
-    request(app.serve.bind(app))
-      .get(&#x27;/absentFile.js&#x27;)
-      .set(&#x27;content-type&#x27;, &#x27;application/json&#x27;)
-      .expect(&#x27;Content-type&#x27;, &#x27;text/html&#x27;)
-      .expect(&#x27;Content-length&#x27;, &#x27;208&#x27;)
-      .expect(404, done);
-  }</code></pre></li></ul></li><li class="suite"><h1>GET/getAllTodo</h1><ul><li class="test pass fast"><h2>should return all existed todoList<span class="duration">3ms</span></h2><pre><code>request(app.serve.bind(app))
-  .get(&#x27;/getAllTodo&#x27;)
-  .set(&#x27;content-type&#x27;, &#x27;application/json&#x27;)
-  .expect(&#x27;Content-type&#x27;, &#x27;application/json&#x27;)
-  .expect(/test for get/)
-  .expect(200, done);</code></pre></li></ul></li><li class="suite"><h1>POST/addTodo</h1><ul><li class="test pass fast"><h2>should add given todo in todo list<span class="duration">3ms</span></h2><pre><code>request(app.serve.bind(app))
-  .post(&#x27;/addTodo&#x27;)
-  .send(JSON.stringify(&#x27;checking&#x27;))
-  .set(&#x27;Accept&#x27;, &#x27;application/json&#x27;)
-  .set(&#x27;content-type&#x27;, &#x27;application/json&#x27;)
-  .expect(&#x27;Content-type&#x27;, &#x27;application/json&#x27;)
-  .expect(/checking/)
-  .expect(200, done);</code></pre></li></ul></li><li class="suite"><h1>POST/deleteTodo</h1><ul><li class="test pass fast"><h2>should delete given todo in todo list<span class="duration">2ms</span></h2><pre><code>request(app.serve.bind(app))
-  .delete(&#x27;/deleteTodo&#x27;)
-  .send(&#x27;2&#x27;)
-  .set(&#x27;Accept&#x27;, &#x27;application/json&#x27;)
-  .set(&#x27;content-type&#x27;, &#x27;application/json&#x27;)
-  .expect(&#x27;Content-type&#x27;, &#x27;application/json&#x27;)
-  .expect(200, done);</code></pre></li></ul></li><li class="suite"><h1>POST/addTask</h1><ul><li class="test pass fast"><h2>should add task in todo list<span class="duration">2ms</span></h2><pre><code>request(app.serve.bind(app))
-  .post(&#x27;/addTask&#x27;)
-  .send(JSON.stringify({title: &#x27;testing&#x27;, id: &#x27;1&#x27;}))
-  .set(&#x27;Accept&#x27;, &#x27;application/json&#x27;)
-  .set(&#x27;content-type&#x27;, &#x27;application/json&#x27;)
-  .expect(&#x27;Content-type&#x27;, &#x27;application/json&#x27;)
-  .expect(/testing/)
-  .expect(200, done);</code></pre></li></ul></li><li class="suite"><h1>POST/deleteTask</h1><ul><li class="test pass fast"><h2>should delete task in todo list<span class="duration">2ms</span></h2><pre><code>request(app.serve.bind(app))
-  .delete(&#x27;/deleteTask&#x27;)
-  .send(JSON.stringify(&#x27;1_2&#x27;))
-  .set(&#x27;Accept&#x27;, &#x27;application/json&#x27;)
-  .set(&#x27;content-type&#x27;, &#x27;application/json&#x27;)
-  .expect(&#x27;Content-type&#x27;, &#x27;application/json&#x27;)
-  .expect(200, done);</code></pre></li></ul></li><li class="suite"><h1>POST/toggle</h1><ul><li class="test pass fast"><h2>should toggle Status of a particular task<span class="duration">2ms</span></h2><pre><code>request(app.serve.bind(app))
-  .post(&#x27;/toggleStatus&#x27;)
-  .send(JSON.stringify(&#x27;1_1&#x27;))
-  .set(&#x27;Accept&#x27;, &#x27;application/json&#x27;)
-  .set(&#x27;content-type&#x27;, &#x27;application/json&#x27;)
-  .expect(&#x27;Content-type&#x27;, &#x27;application/json&#x27;)
-  .expect(200, done);</code></pre></li></ul></li><li class="suite"><h1>PUT/wrong method</h1><ul><li class="test pass fast"><h2>should tell wrong method<span class="duration">1ms</span></h2><pre><code>request(app.serve.bind(app))
-  .put(&#x27;/toggleStatus&#x27;)
-  .send(JSON.stringify(&#x27;1_1&#x27;))
-  .set(&#x27;Accept&#x27;, &#x27;application/json&#x27;)
-  .set(&#x27;content-type&#x27;, &#x27;application/json&#x27;)
-  .expect(400, done);</code></pre></li></ul></li></ul>
+            <ul id="report"></ul>
         </div>
         <script>
         function hideSuitesWithout(className) {

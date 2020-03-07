@@ -1,36 +1,42 @@
-.dot {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  margin: 10px;
+.loading {
+  background-color: rgb(0, 134, 216);
+  padding: 5px;
+  color: whitesmoke;
+  font-family: sans-serif;
+  transform: translate(0px, -40px);
 }
-#dot1 {
-  background: rgb(233, 233, 70);
-  animation: animate 1s linear 0s infinite;
+
+.show-loading {
+  animation: load 1s 0s;
+  transform: translate(0, 0);
 }
-#dot2 {
-  background: green;
-  animation: animate 1s linear 0.1s infinite;
-}
-#dot3 {
-  background: red;
-  animation: animate 1s linear 0.2s infinite;
-}
-#dot4 {
-  background: blue;
-  animation: animate 1s linear 0.3s infinite;
-}
-@keyframes animate {
-  25% {
-    transform: translate(0, -30%);
+
+@keyframes load {
+  0% {
+    transform: translate(0, -40px);
   }
-  75% {
-    transform: translate(0, 30%);
+  100% {
+    transform: translate(0, 0);
   }
 }
+
+.hide-loading {
+  animation: hide 1s;
+  transform: translate(0, -40px);
+}
+
+@keyframes hide {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(0, -40px);
+  }
+}
+
 #test {
-  color: white;
-  background-color: blue;
+  color: whitesmoke;
+  background-color: rgb(0, 134, 216);
   height: 25vw;
   width: 40vw;
   margin: auto;

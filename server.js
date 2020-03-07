@@ -13,15 +13,18 @@ const main = function() {
 const runTest = function(req, res) {
   const {previousCommit} = req.app.locals;
   previousCommit.testStatus = 'pass';
-  exec(`cd testingFolder/${repoName} && git pull origin master && npm run ciTest`, err => {
-    if (err) {
-      previousCommit.testStatus = 'fail';
-      execSync(
-        `curl -X POST -H \'Content-type: application/json\' --data \'{"text":"Tests are failing. Pushed by ${previousCommit.author}"}\' https://hooks.slack.com/services/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`
-      );
+  exec(
+    `cd testingFolder/${repoName} && git pull origin master && mocha --reporter mocha-simple-html-reporter --reporter-options output=../../public/testReport.html && npm run linterTest`,
+    err => {
+      if (err) {
+        previousCommit.testStatus = 'fail';
+        execSync(
+          `curl -s -X POST -H \'Content-type: application/json\' --data \'{"text":"Tests are failing. Pushed by ${previousCommit.author}"}\' https://hooks.slack.com/services/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`
+        );
+      }
+      res.json(previousCommit);
     }
-    res.json(previousCommit);
-  });
+  );
 };
 
 const setPreviousCommit = function(previousCommit, latestCommit) {
@@ -29,7 +32,8 @@ const setPreviousCommit = function(previousCommit, latestCommit) {
   previousCommit.sha = latestCommit.sha;
   previousCommit.author = latestCommit.commit.author.name;
   previousCommit.date = new Date(time).toGMTString().replace('GMT', '');
-  previousCommit.message = latestCommit.commit.message;
+  const [storyTitle] = latestCommit.commit.message.split('\n');
+  previousCommit.message = storyTitle;
 };
 
 const isUpdate = function(req, res) {
